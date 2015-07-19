@@ -1,0 +1,40 @@
+body {
+  color: #444;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  padding: 20px;
+}   
+h3 {
+  margin-top: 0px;
+}   
+a { 
+  color: #444;
+  text-decoration: none;
+}   
+td {
+  min-width: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+  vertical-align: top;
+}   
+.complete {
+  text-decoration: line-through;
+  color: #999;
+}   
+
+.edit-in-place span {
+  cursor: pointer;
+}
+
+.edit-in-place input {
+  display: none;
+}
+
+.edit-in-place.active span {
+  display: none;
+}
+
+.edit-in-place.active input {
+  display: inline-block;
+}
+

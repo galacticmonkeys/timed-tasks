@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="toDoApp" ng-controller="toDoController">
+
+  <head>
+    <title>Tasks App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="start.js"></script>
+    <script src=" http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src=" http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="start.css">
+  </head>
+
+  <body>
+    <h1>Things to do</h1>
+    <h2>Tasks</h2>
+    <table>
+      <tr><td>
+        <h3>Active ({{tasks.length}})</h3>
+        <span ng-hide="tasks.length">You have no active tasks!</span>
+        <div ng-repeat="task in tasks">
+          <input type="checkbox" ng-click="transferToCompleted($index, tasks, completed)"/>
+          <edit-in-place value="task" list="tasks"></edit-in-place>
+          <button type="button" ng-click="deleteTask(task)">x</button><br>
+        </div>
+      </td><td>
+        <div ng-show="completed.length">
+          <h3>Completed ({{ completed.length }})</h3>
+          <div ng-repeat="task in completed">
+            <input type="checkbox" ng-click="transferToCompleted($index, completed, tasks)" checked/> 
+            <span class="complete">{{ task }}</span><br>
+          </div>
+        </div>
+      </td></tr>
+    </table>
+    <h2>Add a Task</h2>
+    <form ng-submit="addTask()">
+      <input type="text" placeholder="Description" ng-model="newTaskName" />
+      <input type="submit" value="Add" />
+    </form>
+  </body>
+</html>
