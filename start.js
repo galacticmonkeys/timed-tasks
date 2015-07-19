@@ -1,7 +1,6 @@
 var app = angular.module('toDoApp', []);
 
 app.controller('toDoController', ['$scope', function($scope) {
-
     $scope.tasks = [];
     $scope.completed = [];
     $scope.newTaskName = '';
@@ -11,10 +10,12 @@ app.controller('toDoController', ['$scope', function($scope) {
       if (name && $scope.tasks.indexOf(name) == -1 && $scope.completed.indexOf(name)) {
         $scope.tasks.push(name);
         $scope.newTaskName = '';
+      } else {
+        alert("You already did this task. Hooray!");
       }
     };
 
-    $scope.transferToCompleted = function(index, start, end) {
+    $scope.transferTo = function(index, start, end) {
       end.push(start[index]);
       start.splice(index, 1);
     }
@@ -22,6 +23,11 @@ app.controller('toDoController', ['$scope', function($scope) {
     $scope.deleteTask = function(task) {
       var index = $scope.tasks.indexOf(task);
       $scope.tasks.splice(index, 1);
+    }
+
+    $scope.clearCompleted = function() {
+      // clear array
+      $scope.completed.length = 0;
     }
 
 }]);

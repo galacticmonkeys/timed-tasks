@@ -18,7 +18,7 @@
         <h3>Active ({{tasks.length}})</h3>
         <span ng-hide="tasks.length">You have no active tasks!</span>
         <div ng-repeat="task in tasks">
-          <input type="checkbox" ng-click="transferToCompleted($index, tasks, completed)"/>
+          <input type="checkbox" ng-click="transferTo($index, tasks, completed)"/>
           <edit-in-place value="task" list="tasks"></edit-in-place>
           <button type="button" ng-click="deleteTask(task)">x</button><br>
         </div>
@@ -26,16 +26,16 @@
         <div ng-show="completed.length">
           <h3>Completed ({{ completed.length }})</h3>
           <div ng-repeat="task in completed">
-            <input type="checkbox" ng-click="transferToCompleted($index, completed, tasks)" checked/> 
+            <input type="checkbox" ng-click="transferTo($index, completed, tasks)" checked/> 
             <span class="complete">{{ task }}</span><br>
           </div>
+          <button type="button" ng-click="clearCompleted()">Clear all</button>
         </div>
       </td></tr>
     </table>
     <h2>Add a Task</h2>
     <form ng-submit="addTask()">
       <input type="text" placeholder="Description" ng-model="newTaskName" />
-      <input type="submit" value="Add" />
     </form>
   </body>
 </html>
