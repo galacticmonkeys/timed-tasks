@@ -46,13 +46,15 @@ app.directive('editInPlace', function() {
         inputElement[0].focus();
         index = $scope.list.indexOf(inputElement[0].value);
       };
-      
-      // When we leave the input, we're done editing.
-      inputElement.prop('onblur', function() {
-        $scope.editing = false;
-        element.removeClass('active');
-        //need to modify $scope.tasks at the correct index
-        $scope.list[index] = inputElement[0].value;
+
+      // When we press enter or on blur, we're done editing.
+      inputElement.on('keypress onblur', function(e) {
+          var code = e.keyCode || e.which;
+          if(code == 13) {
+            $scope.editing = false;
+            element.removeClass('active');
+            $scope.list[index] = inputElement[0].value;             
+          }
       });
     }
   };
