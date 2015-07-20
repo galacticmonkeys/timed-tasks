@@ -18,9 +18,9 @@
         <h3>Active ({{tasks.length}})</h3>
         <span ng-hide="tasks.length">You have no active tasks!</span>
         <div ng-repeat="task in tasks">
-          <button type="button" ng-click="deleteTask(task)">X</button><br>
+          <button type="button" ng-click="deleteTask(task)">X</button>
           <input type="checkbox" ng-click="transferTo($index, tasks, completed)"/>
-          <edit-in-place value="task" list="tasks"></edit-in-place>
+          <edit-in-place value="task" list="tasks"></edit-in-place><br>
         </div>
       </td><td>
         <div ng-show="completed.length">
